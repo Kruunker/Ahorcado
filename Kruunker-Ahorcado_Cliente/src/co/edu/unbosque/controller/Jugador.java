@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 
+import java.io.CharArrayReader;
 import java.util.Random;
 import java.util.Scanner;
 
