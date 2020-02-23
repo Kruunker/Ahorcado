@@ -75,7 +75,7 @@ public class Jugador {
 
 	public static char[] rayaBaja(char[] palabra) {
 		for (int i = 0; i < partir.length; i++) {
-			if (palabra[i]== 32) {
+			if (palabra[i]== ' ') {
 				palabra[i]=' ';
 				
 				
