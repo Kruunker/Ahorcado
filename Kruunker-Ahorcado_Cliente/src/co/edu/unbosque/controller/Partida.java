@@ -1,21 +1,21 @@
 package co.edu.unbosque.controller;
 
-import java.io.CharArrayReader;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Jugador {
-
-	static String[] palabras = new String[8];
-	static char[] partir;
-	static char[] resultado;
-	static Scanner leer;
+public class Partida {
+	private String[] palabras = new String[8];
+	private char[] partir;
+	private char[] resultado;
 	int intentos = 0;
-	 static Jugador jugador1 ;
-	static Jugador jugador2;
+	private Jugador jugador1 ;
+	private Jugador jugador2;
+	
+	
+	public Partida() {
+		
+	
 
-	public static void main(String[] args) {
-		leer = new Scanner(System.in);
 		jugador1= new Jugador();
 
 		jugador2= new Jugador();
@@ -44,32 +44,29 @@ public class Jugador {
 	 * 
 	 * @param palabra
 	 */
-	public static void pintar(int palabra) {
+	public  String pintar(int palabra) {
 		
 		
 		resultado = new char[partir.length];
 		resultado = rayaBaja(resultado);
 
 		int cant = 0;
-		boolean  ganar = false;
-		while(!ganar) {
-			
-			
-		
+		boolean ganar = false;
+		while (!ganar) {
 
-		for (int i = 0; i < palabra; i++) {
-			System.out.println("\nINGRESA LA LETRA: ");
-			char letraR = leer.next().charAt(0);
-			
-			cant = validarLetra(letraR, resultado);
-			i = i + (cant - 1);
-			System.out.println(i);
-		}
+			for (int i = 0; i < palabra; i++) {
+				System.out.println("\nINGRESA LA LETRA: ");
+				char letraR = leer.next().charAt(0);
+
+				cant = validarLetra(letraR, resultado);
+				i = i + (cant - 1);
+				System.out.println(i);
+			}
 		}
 
 	}
 
-	public static char[] partirPalabras(String palabra) {
+	public  char[] partirPalabras(String palabra) {
 		char[] texto;
 		texto = new char[palabra.length()];
 		for (int i = 0; i < palabra.length(); i++) {
@@ -87,7 +84,7 @@ public class Jugador {
 	 * @return
 	 */
 
-	public static char[] rayaBaja(char[] palabra) {
+	public  char[] rayaBaja(char[] palabra) {
 		for (int i = 0; i < partir.length; i++) {
 
 			if (palabra[i]== ' ') {
@@ -104,7 +101,7 @@ public class Jugador {
 
 	}
 
-	public static int validarLetra(char letraR, char[] resultado) {
+	public  int validarLetra(char letraR, char[] resultado) {
 		int cant = 0;
 		for (int i = 0; i < partir.length; i++) {
 
@@ -119,7 +116,7 @@ public class Jugador {
 		return cant;
 	}
 
-	public static boolean cincuentaPorciento() {
+	public  boolean cincuentaPorciento() {
 		int cont = 0;
 		for (int i = 0; i < resultado.length; i++) {
 			if (resultado[i] != '_') {
@@ -133,3 +130,4 @@ public class Jugador {
 		}
 	}
 }
+

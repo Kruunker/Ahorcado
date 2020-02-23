@@ -10,12 +10,11 @@ public class Jugador {
 	 */
 	private String nick;
 	private String correo;
-	private int puntaje;
+	private int puntaje = 10;
 
-	public Jugador(String nick, String correo, int puntaje, DataInputStream in, DataOutputStream out) {
+	public Jugador(String nick, String correo,  DataInputStream in, DataOutputStream out) {
 		this.nick = nick;
 		this.correo = correo;
-		this.puntaje = puntaje;
 	}
 
 	/**
@@ -82,6 +81,10 @@ public class Jugador {
 		return puntaje;
 	}
 
+	public void setPuntaje(int puntaje) {
+		this.puntaje = puntaje;
+	}
+
 	/**
 	 * <br>
 	 * Cambiar Puntaje</br>
@@ -89,8 +92,6 @@ public class Jugador {
 	 * 
 	 * @param puntaje
 	 */
-	public void setPuntaje(int puntaje) {
-		this.puntaje = puntaje;
-	}
+	
 
 }
