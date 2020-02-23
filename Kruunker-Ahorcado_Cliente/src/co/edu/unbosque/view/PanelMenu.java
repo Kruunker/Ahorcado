@@ -69,7 +69,7 @@ public class PanelMenu extends JPanel implements ActionListener {
 		String accion = e.getActionCommand();
 		System.out.println(accion);
 		if (accion.contentEquals("Jugar")) {
-			vp.setSize(1300, 682);
+			vp.setSize(1300, 680);
 			this.setVisible(false);
 			vp.setLocationRelativeTo(null);
 			vp.getPj().setVisible(true);

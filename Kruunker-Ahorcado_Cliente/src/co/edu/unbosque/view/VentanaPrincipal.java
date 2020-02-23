@@ -16,7 +16,7 @@ public class VentanaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 		setSize(505, 535);
-		setResizable(false);
+		setResizable(true);
 		setLocationRelativeTo(null);
 		inicializar();
 		setVisible(true);

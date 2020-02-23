@@ -1,6 +1,5 @@
 package co.edu.unbosque.view;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,14 +10,14 @@ import javax.swing.JPanel;
 
 import co.edu.unbosque.controller.Controller;
 
-public class PanelInicial  extends JPanel implements ActionListener{
-	
+public class PanelInicial extends JPanel implements ActionListener {
+
 	private JLabel fondo;
 	private JButton bcontinuar, biniciarSesion, bregistrarse, bsalir;
 	private VentanaPrincipal vp;
 	private Controller c;
-	public PanelInicial(VentanaPrincipal vp, Controller c)
-	{
+
+	public PanelInicial(VentanaPrincipal vp, Controller c) {
 		this.vp = vp;
 		this.c = c;
 		inicializar();
@@ -26,14 +25,13 @@ public class PanelInicial  extends JPanel implements ActionListener{
 		setLayout(null);
 		setVisible(true);
 	}
-	
-	public void inicializar()
-	{
+
+	public void inicializar() {
 		ImageIcon fond = new ImageIcon("data/inicio2.jpeg");
 		fondo = new JLabel(fond);
 		fondo.setBounds(0, 0, 500, 500);
 		add(fondo);
-		
+
 		bcontinuar = new JButton();
 		bcontinuar.setBounds(120, 30, 240, 240);
 		bcontinuar.setContentAreaFilled(false);
@@ -41,7 +39,7 @@ public class PanelInicial  extends JPanel implements ActionListener{
 		bcontinuar.addActionListener(this);
 		bcontinuar.setActionCommand("Continuar");
 		add(bcontinuar);
-		
+
 		biniciarSesion = new JButton();
 		biniciarSesion.setBounds(125, 300, 230, 50);
 		biniciarSesion.setContentAreaFilled(false);
@@ -49,7 +47,7 @@ public class PanelInicial  extends JPanel implements ActionListener{
 		biniciarSesion.addActionListener(this);
 		biniciarSesion.setActionCommand("IniciarSesion");
 		add(biniciarSesion);
-		
+
 		bregistrarse = new JButton();
 		bregistrarse.setBounds(126, 358, 232, 45);
 		bregistrarse.setContentAreaFilled(false);
@@ -65,7 +63,7 @@ public class PanelInicial  extends JPanel implements ActionListener{
 		bsalir.addActionListener(this);
 		bsalir.setActionCommand("Salir");
 		add(bsalir);
-		
+
 	}
 
 	@Override
@@ -73,7 +71,7 @@ public class PanelInicial  extends JPanel implements ActionListener{
 		String accion = e.getActionCommand();
 		System.out.println(accion);
 		if (accion.contentEquals("Continuar")) {
-			vp.setSize(500,800);
+			vp.setSize(500, 800);
 			this.setVisible(false);
 			vp.setLocationRelativeTo(null);
 			vp.getPm().setVisible(true);
@@ -81,7 +79,7 @@ public class PanelInicial  extends JPanel implements ActionListener{
 		if (accion.contentEquals("IniciarSesion")) {
 			ImageIcon fond = new ImageIcon("data/inicio1.jpeg");
 			fondo.setIcon(fond);
-			fondo.setBounds(0, 0, 500, 500); 
+			fondo.setBounds(0, 0, 500, 500);
 		}
 		if (accion.contentEquals("Salir")) {
 			System.exit(1);
