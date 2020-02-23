@@ -12,7 +12,7 @@ public class Jugador {
 	private String correo;
 	private int puntaje = 10;
 
-	public Jugador(String nick, String correo,  DataInputStream in, DataOutputStream out) {
+	public Jugador(String nick, String correo, DataInputStream in, DataOutputStream out) {
 		this.nick = nick;
 		this.correo = correo;
 	}
@@ -81,6 +81,14 @@ public class Jugador {
 		return puntaje;
 	}
 
+	/**
+	 * <br>
+	 * Puntaje Correo</br>
+	 * Metodo que recibe por parametro un int para sustituir el puntaje por el ya
+	 * existente
+	 * 
+	 * @param puntaje
+	 */
 	public void setPuntaje(int puntaje) {
 		this.puntaje = puntaje;
 	}
@@ -92,6 +100,5 @@ public class Jugador {
 	 * 
 	 * @param puntaje
 	 */
-	
 
 }

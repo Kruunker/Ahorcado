@@ -1,26 +1,24 @@
 package co.edu.unbosque.controller;
 
-import java.io.CharArrayReader;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Jugador {
+public class Main_Metodos {
 
 	static String[] palabras = new String[8];
 	static char[] partir;
 	static char[] resultado;
 	static Scanner leer;
 	int intentos = 0;
-	 static Jugador jugador1 ;
-	static Jugador jugador2;
+	static Main_Metodos jugador1;
+	static Main_Metodos jugador2;
 
 	public static void main(String[] args) {
 		leer = new Scanner(System.in);
-		jugador1= new Jugador();
+		jugador1 = new Main_Metodos();
 
-		jugador2= new Jugador();
+		jugador2 = new Main_Metodos();
 
-		
 		Random random = new Random();
 
 		palabras[0] = "harrypotter";
@@ -45,26 +43,22 @@ public class Jugador {
 	 * @param palabra
 	 */
 	public static void pintar(int palabra) {
-		
-		
+
 		resultado = new char[partir.length];
 		resultado = rayaBaja(resultado);
 
 		int cant = 0;
-		boolean  ganar = false;
-		while(!ganar) {
-			
-			
-		
+		boolean ganar = false;
+		while (!ganar) {
 
-		for (int i = 0; i < palabra; i++) {
-			System.out.println("\nINGRESA LA LETRA: ");
-			char letraR = leer.next().charAt(0);
-			
-			cant = validarLetra(letraR, resultado);
-			i = i + (cant - 1);
-			System.out.println(i);
-		}
+			for (int i = 0; i < palabra; i++) {
+				System.out.println("\nINGRESA LA LETRA: ");
+				char letraR = leer.next().charAt(0);
+
+				cant = validarLetra(letraR, resultado);
+				i = i + (cant - 1);
+				System.out.println(i);
+			}
 		}
 
 	}
@@ -90,12 +84,11 @@ public class Jugador {
 	public static char[] rayaBaja(char[] palabra) {
 		for (int i = 0; i < partir.length; i++) {
 
-			if (palabra[i]== ' ') {
-				palabra[i]=' ';
-				
-				
-			}else {
-				palabra[i]='_';
+			if (palabra[i] == ' ') {
+				palabra[i] = ' ';
+
+			} else {
+				palabra[i] = '_';
 
 			}
 		}
@@ -131,5 +124,10 @@ public class Jugador {
 		} else {
 			return false;
 		}
+	}
+
+	public static int quitarPunto(int puntaje) {
+		
+		return puntaje;
 	}
 }
