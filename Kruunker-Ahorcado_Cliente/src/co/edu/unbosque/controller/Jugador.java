@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 
+import java.io.CharArrayReader;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,9 +10,9 @@ public class Jugador {
 	static char[] partir;
 	static char[] resultado;
 	static Scanner leer;
+
 	public static void main(String[] args) {
 		leer = new Scanner(System.in);
-		
 
 		Random random = new Random();
 
@@ -29,25 +30,29 @@ public class Jugador {
 		int palabra = partir.length;
 		pintar(palabra);
 	}
-		/**
-		 * este metodo pinta la cantidad de veces que tiene que ingresar la letra dependiendo del tamaño de la palabra 
-		 * @param palabra
-		 */
-	   public static void pintar(int palabra) {
+
+	/**
+	 * este metodo pinta la cantidad de veces que tiene que ingresar la letra
+	 * dependiendo del tamaño de la palabra
+	 * 
+	 * @param palabra
+	 */
+	public static void pintar(int palabra) {
 		resultado = new char[partir.length];
-		resultado = rayaBaja(resultado);	
-		
-		int cant =0;
-		
+		resultado = rayaBaja(resultado);
+
+		int cant = 0;
+
 		for (int i = 0; i < palabra; i++) {
 			System.out.println("\nINGRESA LA LETRA: ");
 			char letraR = leer.next().charAt(0);
 			cant = validarLetra(letraR, resultado);
-			i = i +(cant-1);
+			i = i + (cant - 1);
 			System.out.println(i);
 		}
 
 	}
+
 	
 
 	public static char[] partirPalabras(String palabra) {
@@ -57,35 +62,43 @@ public class Jugador {
 			texto[i] = palabra.charAt(i);
 			System.out.print(texto[i]);
 		}
-		
+
 		return texto;
 	}
+
 	/**
-	 * este metodo le asigna a el tamaño de la palabra raya al piso 
+	 * este metodo le asigna a el tamaño de la palabra raya al piso
+	 * 
 	 * @param palabra
 	 * @return
 	 */
-	
-	public static char[] rayaBaja(char [] palabra) {		
+
+	public static char[] rayaBaja(char[] palabra) {
 		for (int i = 0; i < partir.length; i++) {
-			palabra[i] ='_';			
+			if (palabra[i]== 32) {
+				palabra[i]=' ';
+				
+				
+			}else {
+				palabra[i]='_';
+			}
 		}
-		
+
 		return palabra;
-		
+
 	}
 
-	public static int validarLetra(char letraR, char [] resultado) {
+	public static int validarLetra(char letraR, char[] resultado) {
 		int cant = 0;
 		for (int i = 0; i < partir.length; i++) {
-		
+
 			if (partir[i] == letraR) {
 				resultado[i] = letraR;
 				cant++;
-			}			
+			}
 		}
-		
-		System.out.println(resultado);	
+
+		System.out.println(resultado);
 
 		return cant;
 	}
