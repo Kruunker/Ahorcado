@@ -5,57 +5,35 @@ import java.util.Random;
 import co.edu.unbosque.model.Jugador;
 
 public class Partida {
+
 	private String[] palabras = new String[8];
-	private char[] partir;
-	private char[] resultado;
-	int intentos = 0;
+	private char[] partir; // es el arreglo de char que obtiene la palabra caracter a caracter ;
+	private char[] resultado;// es el arreglo de char que obtiene la palabra actualizandola con las rayas
+	private int intentos = 0;
+
+	int cant = 0; // variable que tiene la cantidad de veces que se repiten los espacios
 
 	public Partida() {
-
-		Random random = new Random();
-
-		palabras[0] = "harrypotter";
-		palabras[1] = "bettylafea";
+		palabras[0] = "harry potter";
+		palabras[1] = "betty la fea";
 		palabras[2] = "programacion";
-		palabras[3] = "estructuradedatos ";
-		palabras[4] = "republicadecolombia ";
-		palabras[5] = "banbunny";
+		palabras[3] = "estructura de datos ";
+		palabras[4] = "republica de colombia ";
+		palabras[5] = "ban bunny";
 		palabras[6] = "coronavirus";
 		palabras[7] = "sherk";
 
-		int alea = random.nextInt(8);
-		partir = partirPalabras(palabras[alea]);
-		int palabra = partir.length;
-//		pintar(palabra);
-	}
+		Random random = new Random();
+		int alea = random.nextInt(8);// la palabra aleatoria que se pondra a adivinar
+		partir = partirPalabras(palabras[alea]);// se obtiene caracter a caracter la palabra
 
-	/**
-	 * este metodo pinta la cantidad de veces que tiene que ingresar la letra
-	 * dependiendo del tamaño de la palabra
-	 * 
-	 * @param palabra
-	 */
-//	public  String pintar(int palabra) {
-//		
-//		
-//		resultado = new char[partir.length];
-//		resultado = rayaBaja(resultado);
-//
-//		int cant = 0;
-//		boolean ganar = false;
-//		while (!ganar) {
-//
-//			for (int i = 0; i < palabra; i++) {
-//				System.out.println("\nINGRESA LA LETRA: ");
-//				char letraR = leer.next().charAt(0);
-//
-//				cant = validarLetra(letraR, resultado);
-//				i = i + (cant - 1);
-//				System.out.println(i);
-//			}
-//		}
-//
-//	}
+		cantidadEspacios(palabras[alea]);// la cantidad de espacios que tiene la palabra
+
+		// Cree un metodo que cuente si la palabra tiene espacios
+
+		int palabra = (partir.length - getCant()); // se toma el tamaño de la palabra y se le resta la cantidad de
+												// palabras
+	}
 
 	public char[] partirPalabras(String palabra) {
 		char[] texto;
@@ -65,30 +43,7 @@ public class Partida {
 			System.out.print(texto[i]);
 		}
 
-		return texto;
-	}
-
-	/**
-	 * este metodo le asigna a el tamaño de la palabra raya al piso
-	 * 
-	 * @param palabra
-	 * @return
-	 */
-
-	public char[] rayaBaja(char[] palabra) {
-		for (int i = 0; i < partir.length; i++) {
-
-			if (palabra[i] == ' ') {
-				palabra[i] = ' ';
-
-			} else {
-				palabra[i] = '_';
-
-			}
-		}
-
-		return palabra;
-
+		return texto; // retorna la palabra caracter a caracter
 	}
 
 	public int validarLetra(char letraR, char[] resultado) {
@@ -103,7 +58,7 @@ public class Partida {
 
 		System.out.println(resultado);
 
-		return cant;
+		return cant; // retorna la cantidad de veces que se repite la letra
 	}
 
 	public boolean cincuentaPorciento() {
@@ -120,11 +75,49 @@ public class Partida {
 		}
 	}
 
+	/**
+	 * Metodo que retorna un entero siendo el numero de puntos del jugador pasado
+	 * por parametro
+	 * 
+	 * @param jugador
+	 * @return
+	 */
 	public int quitarPunto(Jugador jugador) {
 		int puntaje = jugador.getPuntaje();
 		puntaje--;
 		jugador.setPuntaje(puntaje);
+		return puntaje;
+	}
 
-		return jugador.getPuntaje();
+	/**
+	 * este metodo le asigna a el tamaño de la palabra raya al piso
+	 * 
+	 * @param palabra
+	 * @return
+	 */
+	public int cantidadEspacios(String palabra) {
+		for (int i = 0; i < palabra.length(); i++) {
+			if (palabra.charAt(i) == ' ') {
+				cant++;
+			}
+		}
+
+		return cant;// retorna la cantidad de espacios que tiene la letra
+
+	}
+
+	public char[] rayaBaja(char[] palabra) {
+		for (int i = 0; i < partir.length; i++) {
+			palabra[i] = '_';
+		}
+		return palabra; // retorna la palabra con raya baja
+	}
+
+	public int getCant() {
+		return cant;
+	}
+
+	public static void setCant(int cant) {
+		Main_Metodos.cant = cant;
 	}
 }
