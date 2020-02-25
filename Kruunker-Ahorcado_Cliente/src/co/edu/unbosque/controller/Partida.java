@@ -9,7 +9,6 @@ public class Partida {
 	private String[] palabras = new String[8];
 	private char[] partir; // es el arreglo de char que obtiene la palabra caracter a caracter ;
 	private char[] resultado;// es el arreglo de char que obtiene la palabra actualizandola con las rayas
-	private int intentos = 0;
 
 	int cant = 0; // variable que tiene la cantidad de veces que se repiten los espacios
 
@@ -26,13 +25,8 @@ public class Partida {
 		Random random = new Random();
 		int alea = random.nextInt(8);// la palabra aleatoria que se pondra a adivinar
 		partir = partirPalabras(palabras[alea]);// se obtiene caracter a caracter la palabra
-
-		cantidadEspacios(palabras[alea]);// la cantidad de espacios que tiene la palabra
-
-		// Cree un metodo que cuente si la palabra tiene espacios
-
-		int palabra = (partir.length - getCant()); // se toma el tamaño de la palabra y se le resta la cantidad de
-												// palabras
+		resultado = new char[partir.length]; // resultado se le asigna la palabra partida caracter a caracter
+		resultado = rayaBaja();
 	}
 
 	public char[] partirPalabras(String palabra) {
@@ -40,13 +34,13 @@ public class Partida {
 		texto = new char[palabra.length()];
 		for (int i = 0; i < palabra.length(); i++) {
 			texto[i] = palabra.charAt(i);
-			System.out.print(texto[i]);
 		}
 
 		return texto; // retorna la palabra caracter a caracter
 	}
 
-	public int validarLetra(char letraR, char[] resultado) {
+	public boolean validarLetra(char letraR, char[] resultado) {
+
 		int cant = 0;
 		for (int i = 0; i < partir.length; i++) {
 
@@ -55,10 +49,7 @@ public class Partida {
 				cant++;
 			}
 		}
-
-		System.out.println(resultado);
-
-		return cant; // retorna la cantidad de veces que se repite la letra
+		return false; // retorna la cantidad de veces que se repite la letra
 	}
 
 	public boolean cincuentaPorciento() {
@@ -74,6 +65,7 @@ public class Partida {
 			return false;
 		}
 	}
+	
 
 	/**
 	 * Metodo que retorna un entero siendo el numero de puntos del jugador pasado
@@ -106,18 +98,11 @@ public class Partida {
 
 	}
 
-	public char[] rayaBaja(char[] palabra) {
-		for (int i = 0; i < partir.length; i++) {
-			palabra[i] = '_';
+	public char[] rayaBaja() {
+		for (int i = 0; i < resultado.length; i++) {
+			resultado[i] = '_';
 		}
-		return palabra; // retorna la palabra con raya baja
+		return resultado; // retorna la palabra con raya baja
 	}
 
-	public int getCant() {
-		return cant;
-	}
-
-	public static void setCant(int cant) {
-		Main_Metodos.cant = cant;
-	}
 }
