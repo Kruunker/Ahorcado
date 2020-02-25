@@ -8,13 +8,13 @@ import co.edu.unbosque.model.Jugador;
 public class Main_Metodos {
 
 	static String[] palabras = new String[8];
-	static char[] partir;
-	static char[] resultado;
+	static char[] partir; // es el arreglo de char que obtiene la palabra caracter a caracter ;
+	static char[] resultado;//es el arreglo de char que obtiene la palabra actualizandola con las rayas
 	static Scanner leer;
 	int intentos = 0;
 	static Main_Metodos jugador1;
 	static Main_Metodos jugador2;
-	static int cant = 0;
+	static int cant = 0; // variable que tiene la cantidad de veces que se repiten los espacios 
 
 	public static void main(String[] args) {
 		leer = new Scanner(System.in);
@@ -33,13 +33,15 @@ public class Main_Metodos {
 		palabras[6] = "coronavirus";
 		palabras[7] = "sherk";
 
-		int alea = random.nextInt(8);
-		partir = partirPalabras(palabras[alea]);
-		cantidadEspacios(palabras[alea]);
+		int alea = random.nextInt(8);// la palabra aleatoria que se pondra a adivinar
+		partir = partirPalabras(palabras[alea]);// se obtiene caracter a caracter la palabra 
+		
+		cantidadEspacios(palabras[alea]);// la cantidad de espacios que tiene la palabra
+		
 
 		// Cree un metodo que cuente si la palabra tiene espacios
 
-		int palabra = (partir.length - getCant());
+		int palabra = (partir.length - getCant()); // se toma el tamaño de la palabra y se le resta la cantidad de palabras
 		pintar(palabra);
 	}
 
@@ -51,10 +53,10 @@ public class Main_Metodos {
 	 */
 	public static void pintar(int palabra) {
 
-		resultado = new char[partir.length];
-		resultado = rayaBaja(resultado);
+		resultado = new char[partir.length]; //resultado se le asigna la palabra partida caracter a caracter
+		resultado = rayaBaja(resultado);	 // se le agrega al metodo rayaBaja la palabra para que le asigne las lineas 
 
-		int cant = 0;
+		int cant = 0; // variable que tiene la cantidad de letras que se repite 
 		boolean ganar = false;
 		while (!ganar) {
 
@@ -62,8 +64,8 @@ public class Main_Metodos {
 				System.out.println("\nINGRESA LA LETRA: ");
 				char letraR = leer.next().charAt(0);
 
-				cant = validarLetra(letraR, resultado);
-				i = i + (cant - 1);
+				cant = validarLetra(letraR, resultado); // llama al metodo para verificar si la letra si esta
+				i = i + (cant - 1); //  se le resta la cantidad de veces que se repita la letra a las posiciones 
 				System.out.println(i);
 			}
 		}
@@ -78,7 +80,7 @@ public class Main_Metodos {
 			System.out.print(texto[i]);
 		}
 
-		return texto;
+		return texto; // retorna la palabra caracter a caracter 
 	}
 
 	public static int validarLetra(char letraR, char[] resultado) {
@@ -93,7 +95,7 @@ public class Main_Metodos {
 
 		System.out.println(resultado);
 
-		return cant;
+		return cant; // retorna la cantidad de veces que se repite la letra
 	}
 
 	public static boolean cincuentaPorciento() {
@@ -137,7 +139,7 @@ public class Main_Metodos {
 			}
 		}
 
-		return cant;
+		return cant;// retorna la cantidad de espacios que tiene la letra
 
 	}
 
@@ -145,7 +147,7 @@ public class Main_Metodos {
 		for (int i = 0; i < partir.length; i++) {
 			palabra[i] = '_';
 		}
-		return palabra;
+		return palabra; // retorna la palabra con raya baja
 	}
 
 	public static int getCant() {
