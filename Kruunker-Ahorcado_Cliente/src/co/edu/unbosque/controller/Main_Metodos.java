@@ -3,6 +3,8 @@ package co.edu.unbosque.controller;
 import java.util.Random;
 import java.util.Scanner;
 
+import co.edu.unbosque.model.Jugador;
+
 public class Main_Metodos {
 
 	static String[] palabras = new String[8];
@@ -13,7 +15,7 @@ public class Main_Metodos {
 	static Main_Metodos jugador1;
 	static Main_Metodos jugador2;
 	static int cant = 0;
-	
+
 	public static void main(String[] args) {
 		leer = new Scanner(System.in);
 		jugador1 = new Main_Metodos();
@@ -30,7 +32,7 @@ public class Main_Metodos {
 		palabras[5] = "ban bunny";
 		palabras[6] = "coronavirus";
 		palabras[7] = "sherk";
-		
+
 		int alea = random.nextInt(8);
 		partir = partirPalabras(palabras[alea]);
 		cantidadEspacios(palabras[alea]);
@@ -108,11 +110,20 @@ public class Main_Metodos {
 		}
 	}
 
-	public static int quitarPunto(int puntaje) {
-		
+	/**
+	 * Metodo que retorna un entero siendo el numero de puntos del jugador pasado
+	 * por parametro
+	 * 
+	 * @param jugador
+	 * @return
+	 */
+	public static int quitarPunto(Jugador jugador) {
+		int puntaje = jugador.getPuntaje();
+		puntaje--;
+		jugador.setPuntaje(puntaje);
 		return puntaje;
 	}
-	
+
 	/**
 	 * este metodo le asigna a el tamaño de la palabra raya al piso
 	 * 
@@ -132,11 +143,11 @@ public class Main_Metodos {
 
 	public static char[] rayaBaja(char[] palabra) {
 		for (int i = 0; i < partir.length; i++) {
-			palabra[i]='_';
+			palabra[i] = '_';
 		}
 		return palabra;
 	}
-	
+
 	public static int getCant() {
 		return cant;
 	}
