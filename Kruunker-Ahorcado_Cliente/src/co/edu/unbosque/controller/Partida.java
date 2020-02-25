@@ -40,16 +40,19 @@ public class Partida {
 	}
 
 	public boolean validarLetra(char letraR, char[] resultado) {
-
-		int cant = 0;
+		int cont = 0;
 		for (int i = 0; i < partir.length; i++) {
 
 			if (partir[i] == letraR) {
-				resultado[i] = letraR;
-				cant++;
-			}
+				cont++;
+			}  
 		}
-		return false; // retorna la cantidad de veces que se repite la letra
+		if (cont != 0) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	public boolean cincuentaPorciento() {
@@ -65,7 +68,6 @@ public class Partida {
 			return false;
 		}
 	}
-	
 
 	/**
 	 * Metodo que retorna un entero siendo el numero de puntos del jugador pasado
